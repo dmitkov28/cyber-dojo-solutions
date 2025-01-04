@@ -1,6 +1,6 @@
 from typing import List
 import unittest
-from solution import calculate_discount
+from solution import calculate_discount, has_possible_combinations
 
 
 class TestHarryPotter(unittest.TestCase):
@@ -50,3 +50,10 @@ class TestHarryPotter(unittest.TestCase):
 
         has_combinations_of_2 = has_possible_combinations(input_data, 2)
         self.assertFalse(has_combinations_of_2)
+
+    def test_remove_book(self):
+        books = [1, 2, 3]
+        result = remove_book(books, 2)
+        expected_result = [1, 3]
+
+        self.assertListEqual(result, expected_result)
