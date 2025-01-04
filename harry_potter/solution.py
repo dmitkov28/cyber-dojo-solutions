@@ -28,3 +28,9 @@ def calculate_discount(n_books: int) -> float:
 
 def has_possible_combinations(input_data: List[int], n_combinations: int) -> bool:
     return len(set(itertools.combinations(input_data, n_combinations))) > 0
+
+
+def remove_book(books: List[int], book_to_remove: int) -> List[int]:
+    new_books = books.copy()
+    new_books.remove(book_to_remove)
+    return new_books
