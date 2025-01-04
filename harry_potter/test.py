@@ -1,10 +1,11 @@
 from typing import List
 import unittest
-from solution import calculate_discount, has_possible_combinations
+from solution import calculate_discount, has_possible_combinations, remove_book
 
 
 class TestHarryPotter(unittest.TestCase):
     def test_calculate_discount(self):
+        SINGLE_BOOK_PRICE = 8
         SINGLE_BOOK_DISCOUNT_RATE = 0
         TWO_BOOKS_DISCOUNT_RATE = 0.05
         THREE_BOOKS_DISCOUNT_RATE = 0.1
@@ -17,11 +18,11 @@ class TestHarryPotter(unittest.TestCase):
         four_books_discount = calculate_discount(n_books=4)
         five_books_discount = calculate_discount(n_books=5)
 
-        self.assertEqual(single_book_discount, (SINGLE_BOOK_DISCOUNT_RATE + 1))
-        self.assertEqual(two_books_discount, (TWO_BOOKS_DISCOUNT_RATE + 1) * 2)
-        self.assertEqual(three_books_discount, (THREE_BOOKS_DISCOUNT_RATE + 1) * 3)
-        self.assertEqual(four_books_discount, (FOUR_BOOKS_DISCOUNT_RATE + 1) * 4)
-        self.assertEqual(five_books_discount, (FIVE_BOOKS_DISCOUNT_RATE + 1) * 5)
+        self.assertEqual(single_book_discount, 0)
+        self.assertEqual(two_books_discount, TWO_BOOKS_DISCOUNT_RATE * SINGLE_BOOK_PRICE * 2 )
+        self.assertEqual(three_books_discount, THREE_BOOKS_DISCOUNT_RATE * SINGLE_BOOK_PRICE * 3)
+        self.assertEqual(four_books_discount, FOUR_BOOKS_DISCOUNT_RATE * SINGLE_BOOK_PRICE * 4)
+        self.assertEqual(five_books_discount, FIVE_BOOKS_DISCOUNT_RATE * SINGLE_BOOK_PRICE * 5)
 
     def test_has_possible_combinations(self):
         input_data = [1, 1, 2, 2, 3, 3, 4, 5]
@@ -57,3 +58,8 @@ class TestHarryPotter(unittest.TestCase):
         expected_result = [1, 3]
 
         self.assertListEqual(result, expected_result)
+
+    def test_calculate_biggest_discount(self):
+        books = [1, 1, 2, 2, 3, 3, 4, 5]
+        
+        
