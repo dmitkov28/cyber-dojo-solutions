@@ -1,3 +1,4 @@
+from typing import List
 import unittest
 from solution import calculate_discount
 
@@ -21,3 +22,31 @@ class TestHarryPotter(unittest.TestCase):
         self.assertEqual(three_books_discount, (THREE_BOOKS_DISCOUNT_RATE + 1) * 3)
         self.assertEqual(four_books_discount, (FOUR_BOOKS_DISCOUNT_RATE + 1) * 4)
         self.assertEqual(five_books_discount, (FIVE_BOOKS_DISCOUNT_RATE + 1) * 5)
+
+    def test_has_possible_combinations(self):
+        input_data = [1, 1, 2, 2, 3, 3, 4, 5]
+
+        has_combinations_of_1 = has_possible_combinations(input_data, 1)
+        self.assertTrue(has_combinations_of_1)
+
+        has_combinations_of_2 = has_possible_combinations(input_data, 2)
+        self.assertTrue(has_combinations_of_2)
+
+        has_combinations_of_3 = has_possible_combinations(input_data, 3)
+        self.assertTrue(has_combinations_of_3)
+
+        has_combinations_of_4 = has_possible_combinations(input_data, 4)
+        self.assertTrue(has_combinations_of_4)
+
+        has_combinations_of_5 = has_possible_combinations(input_data, 5)
+        self.assertTrue(has_combinations_of_5)
+
+        input_data = [1, 2]
+
+        has_combinations_of_2 = has_possible_combinations(input_data, 3)
+        self.assertFalse(has_combinations_of_2)
+
+        input_data = [1]
+
+        has_combinations_of_2 = has_possible_combinations(input_data, 2)
+        self.assertFalse(has_combinations_of_2)
